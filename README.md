@@ -16,10 +16,14 @@ Usage of froxy-proxy:
         address to serve on (default ":5555")
   -allow string
         CONNECT allowed ports (comma separated list) (default "443")
+  -cred string
+        username:password that will be used to authenticate http clients
 ```
 `addr` is the address on which the server will run, it listens on all interfaces on port `5555` by default.
 
 `allow` is a comma separated list of the allowed ports while using `CONNECT`, it contains only `443` by default.
+
+`cred` is an option that can be used to provide `Basic` authentication for http clients.
 ```
 ./froxy-proxy
 ```
@@ -38,5 +42,7 @@ Now the proxy is ready to be used.
 
 * Binding to ports below 1024 requires root priviliges.
 
+* `Basic` authentication is not a secure way to protect the server as the username:password base64-encoded parameter is sent in clear text.
+
 ## REF
-* Hypertext Transfer Protocol (HTTP/1.1) - Semantics and Content (rfc 7231): https://www.rfc-editor.org/rfc/rfc7231
+* Hypertext Transfer Protocol (HTTP/1.1) - Semantics and Content (rfc 9110): https://www.rfc-editor.org/rfc/rfc9110.html
